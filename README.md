@@ -11,9 +11,15 @@
 - **Environment Variables**: Manage and store environment variables securely.
 - **User-Friendly Interface**: Clean and intuitive UI for a better user experience.
 
+## To add a developer to the project, follow these steps:
+
+1. The developer must log in to the application first.
+2. Once logged in, you can add the developer's email address to the project.
+3. If you attempt to add an email address before the developer has logged in, you will see an error message indicating that the user does not exist.
+
 ## Usage 🛠️
 
-You can download the latest release of **ENV MANAGER** from the [Releases](https://github.com/yourusername/env_manager/releases) section of the repository. After downloading, install the app on your device and start managing your environment variables efficiently!
+You can download the latest release of **ENV MANAGER** from the [Releases](https://github.com/harsshhan/Env-Manager/releases) section of the repository. After downloading, install the app on your device and start managing your environment variables efficiently!
 
 ## 🛠️ Technologies Used
 
