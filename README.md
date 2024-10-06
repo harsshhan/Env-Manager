@@ -28,11 +28,17 @@ You can download the latest release of **ENV MANAGER** from the [Releases](https
 - **FastAPI:** A modern, fast (high-performance) web framework for building APIs with Python.
 
 
+## Demo
+
+https://github.com/user-attachments/assets/68dac975-765b-438d-879b-2c4506571f95
+
+
+
 Due to time constraints, the following features are planned for future updates:
 - **Team Collaboration Tools:** Integrate messaging or commenting features for better teamwork.
 - **Copy Environment Variables:** Allow users to easily copy environment variables with a single click.
 - **Clean UI Design:** Enhance the user interface for a more intuitive and aesthetically pleasing experience.
-
+- **Improved Project Management**: Show a list of developers added to the project with options to delete them easily using checkboxes.
 
 
 ## License 📄
