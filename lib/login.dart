@@ -16,24 +16,24 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Set background color to white
+      backgroundColor: Colors.white, 
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'ENV MANAGER', // App Name
+              const Text(
+                'ENV MANAGER',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               isLoading
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : ElevatedButton(
                       onPressed: () async {
                         try {
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Login Failed")),
+                              const SnackBar(content: Text("Login Failed")),
                             );
                           }
                         } catch (e) {
@@ -69,11 +69,11 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white, backgroundColor: Colors.blueAccent, // Text color
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                             vertical: 16.0, horizontal: 32.0),
-                        textStyle: TextStyle(fontSize: 18),
+                        textStyle: const TextStyle(fontSize: 18),
                       ),
-                      child: Text('Login with Google'), // Button text
+                      child: const Text('Login with Google'), 
                     ),
             ],
           ),

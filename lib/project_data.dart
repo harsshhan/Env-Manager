@@ -13,7 +13,7 @@ class ProjectData extends StatefulWidget {
   final String access;
   final List<Map<String, dynamic>> envs;
 
-  ProjectData({
+  const ProjectData({super.key, 
     required this.project_id,
     required this.projectName,
     required this.envs,
@@ -28,21 +28,21 @@ class _ProjectDataState extends State<ProjectData> {
   final _formKey = GlobalKey<FormState>();
   String keyName = '';
   String keyValue = '';
-  String? apiUrl = '';
+  String? apiUrl = dotenv.env['API_URL'];
   String developerEmail = '';
 
   final key = encrypt.Key.fromUtf8('adfkjdlasjfaldsjfdklfj');
   final IV = encrypt.IV.fromLength(16);
 
-  Future<void> addEnv(String id, String key_name, String key_value) async {
+  Future<void> addEnv(String id, String keyName, String keyValue) async {
     try {
 
       final response = await http.post(Uri.parse('$apiUrl/addenv'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             'project_id': id,
-            'key_name': key_name,
-            'key_value': key_value
+            'key_name': keyName,
+            'key_value': keyValue
           }));
 
       if (response.statusCode == 200) {
@@ -62,12 +62,12 @@ class _ProjectDataState extends State<ProjectData> {
     }
   }
 
-  Future<void> deletedEnv(String project_id, String env_id) async {
+  Future<void> deletedEnv(String projectId, String envId) async {
     try {
       final response = await http.delete(
         Uri.parse('$apiUrl/envdelete'),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'project_id': project_id, 'env_id': env_id}),
+        body: jsonEncode({'project_id': projectId, 'env_id': envId}),
       );
 
       if (response.statusCode == 200) {
@@ -96,11 +96,11 @@ class _ProjectDataState extends State<ProjectData> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(widget.projectName),
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0.5,
       ),
       body: widget.envs.isEmpty
-          ? Center(
+          ? const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -119,21 +119,21 @@ class _ProjectDataState extends State<ProjectData> {
                 itemBuilder: (context, index) {
                   final env = widget.envs[index];
                   return Card(
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ListTile(
-                      contentPadding: EdgeInsets.all(16),
-                      leading: Icon(
+                      contentPadding: const EdgeInsets.all(16),
+                      leading: const Icon(
                         Icons.vpn_key,
                         color: Colors.blueAccent,
                         size: 30,
                       ),
                       title: Text(
                         env['key_name'],
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
@@ -154,7 +154,7 @@ class _ProjectDataState extends State<ProjectData> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 IconButton(
-                                  icon: Icon(Icons.edit,
+                                  icon: const Icon(Icons.edit,
                                       color: Colors.blueAccent),
                                   onPressed: () {
                                     keyName = env['key_name'];
@@ -163,7 +163,7 @@ class _ProjectDataState extends State<ProjectData> {
                                       context: context,
                                       builder: (BuildContext context) {
                                         return AlertDialog(
-                                          title: Text('Edit ENV Variable'),
+                                          title: const Text('Edit ENV Variable'),
                                           content: SizedBox(
                                             height: 160,
                                             width: 300,
@@ -172,7 +172,7 @@ class _ProjectDataState extends State<ProjectData> {
                                               child: Column(
                                                 children: [
                                                   TextFormField(
-                                                    decoration: InputDecoration(
+                                                    decoration: const InputDecoration(
                                                       labelText: 'Key Name',
                                                       border:
                                                           OutlineInputBorder(),
@@ -191,9 +191,9 @@ class _ProjectDataState extends State<ProjectData> {
                                                       });
                                                     },
                                                   ),
-                                                  SizedBox(height: 20),
+                                                  const SizedBox(height: 20),
                                                   TextFormField(
-                                                    decoration: InputDecoration(
+                                                    decoration: const InputDecoration(
                                                       labelText: 'Key Value',
                                                       border:
                                                           OutlineInputBorder(),
@@ -221,7 +221,7 @@ class _ProjectDataState extends State<ProjectData> {
                                               onPressed: () {
                                                 Navigator.of(context).pop();
                                               },
-                                              child: Text('Close'),
+                                              child: const Text('Close'),
                                             ),
                                             TextButton(
                                               onPressed: () {
@@ -236,7 +236,7 @@ class _ProjectDataState extends State<ProjectData> {
                                                   Navigator.of(context).pop();
                                                 }
                                               },
-                                              child: Text('Submit'),
+                                              child: const Text('Submit'),
                                             ),
                                           ],
                                         );
@@ -245,14 +245,14 @@ class _ProjectDataState extends State<ProjectData> {
                                   },
                                 ),
                                 IconButton(
-                                  icon: Icon(Icons.delete, color: Colors.red),
+                                  icon: const Icon(Icons.delete, color: Colors.red),
                                   onPressed: () {
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) {
                                         return AlertDialog(
-                                          title: Text('Delete ENV Variable'),
-                                          content: Text(
+                                          title: const Text('Delete ENV Variable'),
+                                          content: const Text(
                                               'Are you sure you want to delete this data?'),
                                           actions: [
                                             TextButton(
@@ -265,13 +265,13 @@ class _ProjectDataState extends State<ProjectData> {
                                                 });
                                                 Navigator.of(context).pop();
                                               },
-                                              child: Text('Yes'),
+                                              child: const Text('Yes'),
                                             ),
                                             TextButton(
                                               onPressed: () {
                                                 Navigator.of(context).pop();
                                               },
-                                              child: Text('No'),
+                                              child: const Text('No'),
                                             ),
                                           ],
                                         );
@@ -294,7 +294,7 @@ class _ProjectDataState extends State<ProjectData> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Add New ENV Variable'),
+                        title: const Text('Add New ENV Variable'),
                         content: SizedBox(
                           height: 160,
                           width: 300,
@@ -303,7 +303,7 @@ class _ProjectDataState extends State<ProjectData> {
                               child: Column(
                                 children: [
                                   TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       labelText: 'Key Name',
                                       border: OutlineInputBorder(),
                                     ),
@@ -319,11 +319,11 @@ class _ProjectDataState extends State<ProjectData> {
                                       });
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 20,
                                   ),
                                   TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         labelText: 'Key Value',
                                         border: OutlineInputBorder()),
                                     validator: (value) {
@@ -346,7 +346,7 @@ class _ProjectDataState extends State<ProjectData> {
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Text('Close')),
+                              child: const Text('Close')),
                           TextButton(
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
@@ -360,14 +360,14 @@ class _ProjectDataState extends State<ProjectData> {
                                   }
                                 }
                               },
-                              child: Text('Submit'))
+                              child: const Text('Submit'))
                         ],
                       );
                     });
               },
-              child: Icon(Icons.add),
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
               backgroundColor: Colors.blueAccent,
+              child: Icon(Icons.add),
             )
           : null,
     );

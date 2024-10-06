@@ -8,11 +8,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "assets/.env");
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,14 +25,14 @@ class MyApp extends StatelessWidget {
         if(snapshot.connectionState==ConnectionState.active){
           User? user=snapshot.data;
           if(user==null){
-            return LoginPage();
+            return const LoginPage();
           }
           else{
             return Home(userdata: user,);
           }
         }
         else{
-          return Scaffold(
+          return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
             ),

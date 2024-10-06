@@ -43,4 +43,5 @@ app.*.map.json
 /android/app/release
 
 
-/.env
+.env
+lib/env.dart

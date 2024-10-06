@@ -12,14 +12,14 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class Home extends StatefulWidget {
   User userdata;
 
-  Home({required this.userdata});
+  Home({super.key, required this.userdata});
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   List<Map<String, dynamic>> projects = [];
-  String? apiUrl = '';
+  String? apiUrl = dotenv.env['API_URL'];
   bool isLoading = true;
   final TextEditingController projectNameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -74,29 +74,29 @@ class _HomeState extends State<Home> {
     }
   }
 
-  Future<void> deleteProject(String email, String project_id) async {
+  Future<void> deleteProject(String email, String projectId) async {
     try {
       final response = await http.delete(Uri.parse('$apiUrl/deleteproject'),
           headers: {'Content-Type': 'application/json'},
-          body: jsonEncode({'email': email, 'project_id': project_id}));
+          body: jsonEncode({'email': email, 'project_id': projectId}));
 
       if (response.statusCode == 200) {
         if (mounted) {
           setState(() {
             projects
-                .removeWhere((project) => project['project_id'] == project_id);
+                .removeWhere((project) => project['project_id'] == projectId);
           });
         }
       }
     } catch (e) {}
   }
 
-  Future<void> addDeveloper(String project_id, String email) async {
+  Future<void> addDeveloper(String projectId, String email) async {
     try {
       final response = await http.post(
         Uri.parse('$apiUrl/add_developer'),
         headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'project_id': project_id, 'email': email}),
+        body: jsonEncode({'project_id': projectId, 'email': email}),
       );
       final jsonResponse = jsonDecode(response.body);
       print(jsonResponse);
@@ -169,7 +169,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    apiUrl = dotenv.env['API_URL'] ?? '';
+    // apiUrl = dotenv.env['API_URL'] ?? '';
     fetchProjects(widget.userdata.email!);
   }
 
@@ -254,8 +254,8 @@ class _HomeState extends State<Home> {
                         child: ListTile(
                           contentPadding: EdgeInsets.all(16),
                           leading: Icon(
-                            Icons.delete,
-                            color: Colors.blueAccent,
+                            Icons.security,
+                            color: Colors.green,
                             size: 30,
                           ),
                           onTap: () {
@@ -290,7 +290,7 @@ class _HomeState extends State<Home> {
                                         icon: Icon(Icons.add)),
                                     IconButton(
                                         icon: Icon(Icons.delete,
-                                            color: Colors.blueAccent),
+                                            color: Colors.red),
                                         onPressed: () {
                                           showDialog(
                                               context: context,
@@ -421,7 +421,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void _addDeveloper(BuildContext context,String project_id) {
+  void _addDeveloper(BuildContext context,String projectId) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -460,7 +460,7 @@ class _HomeState extends State<Home> {
               TextButton(
                   onPressed: () async {
                     Navigator.pop(context);
-                    await addDeveloper(project_id, developerEmail);
+                    await addDeveloper(projectId, developerEmail);
                   },
                   child: Text('Add'))
             ],
