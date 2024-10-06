@@ -36,7 +36,6 @@ class _ProjectDataState extends State<ProjectData> {
 
   Future<void> addEnv(String id, String key_name, String key_value) async {
     try {
-      final a= encrypt.Encrypter(encrypt.AES(encrypt.Key.fromUtf8('adfkjdlasjfaldsjfdklfj')));
       final response = await http.post(Uri.parse('$apiUrl/addenv'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
