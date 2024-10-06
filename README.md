@@ -1,16 +1,34 @@
-# env_manager
+# ENV MANAGER 🔒
 
-A new Flutter project.
+**ENV MANAGER** is a Flutter application designed to help users manage their environment variables efficiently. This app allows users to create, delete, and manage projects while ensuring secure access for developers. Built with a user-friendly interface, it aims to streamline the workflow for developers and teams.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Features ✨
 
-A few resources to get you started if this is your first Flutter project:
+- **User Authentication**: Secure login using Google Sign-In.
+- **Project Management**: Create and manage multiple projects with ease.
+- **Developer Access**: Add developers to projects and manage their access levels.
+- **Environment Variables**: Manage and store environment variables securely.
+- **User-Friendly Interface**: Clean and intuitive UI for a better user experience.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Usage 🛠️
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+You can download the latest release of **ENV MANAGER** from the [Releases](https://github.com/yourusername/env_manager/releases) section of the repository. After downloading, install the app on your device and start managing your environment variables efficiently!
+
+## 🛠️ Technologies Used
+
+- **Flutter:** A UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase, using Dart language.
+- **MongoDB:** A NoSQL database for high performance and scalability.
+- **FastAPI:** A modern, fast (high-performance) web framework for building APIs with Python.
+
+
+Due to time constraints, the following features are planned for future updates:
+- **Team Collaboration Tools:** Integrate messaging or commenting features for better teamwork.
+- **Copy Environment Variables:** Allow users to easily copy environment variables with a single click.
+- **Clean UI Design:** Enhance the user interface for a more intuitive and aesthetically pleasing experience.
+
+
+
+## License 📄
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
