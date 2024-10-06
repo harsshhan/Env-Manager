@@ -1,4 +1,4 @@
-package com.example.env_manager
+package com.example.app
 
 import io.flutter.embedding.android.FlutterActivity
 
