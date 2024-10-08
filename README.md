@@ -21,12 +21,16 @@
 
 You can download the latest release of **ENV MANAGER** from the [Releases](https://github.com/harsshhan/Env-Manager/releases) section of the repository. After downloading, install the app on your device and start managing your environment variables efficiently!
 
+
 ## 🛠️ Technologies Used
 
 - **Flutter:** A UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase, using Dart language.
 - **MongoDB:** A NoSQL database for high performance and scalability.
 - **FastAPI:** A modern, fast (high-performance) web framework for building APIs with Python.
 
+## Backend
+- Checkout the backend program for this application [ENVMANAGER API](https://github.com/harsshhan/ENVMANAGER_API)
+- This backend program is written in FastAPI, which is a web framework for building APIs with Python
 
 ## Demo
 
